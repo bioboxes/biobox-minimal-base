@@ -4,17 +4,14 @@ This is contains a minimal debian base image for creating bioboxes. This
 bundles software which can make the verification and argument parsing steps of
 running a biobox easier. The included software are:
 
-  * **validate-biobox-file** - used to ensure the biobox.yaml given to the
-    container is correct. This should be used to make sure the the arguments
-    given by user the container are correct, and provide usable error messages
-    if not the case.
+  * **validate_inputs.sh** - used to ensure the biobox.yaml given to the
+    container is correct. This is run as the `ENTRYPOINT` directive in the
+    Dockerfile. After checking the biobox.yaml file the script named by the
+    `BIOBOX_EXEC` environment variable in the developer's Dockfile is called.
 
-  * **yaml2json** and **jq** - the biobox.yaml file contains the arguments to
-    run the software in the container. Using a combination of yaml2json and jq
-    the input parameters can be extracted from the biobox.yaml. An example of
-    fetching fastq paths from the biobox.yaml is:
+  * **biobox_args.sh** - Fetches the `biobox.yaml` arguments and then applies a
+    given `jq` path. An example of fetching fastq paths is:
 
     ```
-    yaml2json /bbx/input/biobox.yaml |\
-      jq --raw-output 'select(has("fasta")) | .fasta[].id'
+    biobox_args.sh 'select(has("fasta")) | .fasta | map(.value)'
     ```
