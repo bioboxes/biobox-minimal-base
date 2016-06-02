@@ -38,3 +38,8 @@ RUN wget \
       'https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64' \
       ${JQ} && \
     chmod 500 /usr/local/bin/jq
+
+ADD biobox_args.sh /usr/local/bin
+ADD validate_inputs.sh /usr/local/bin
+
+ENTRYPOINT ["validate_inputs.sh"]
