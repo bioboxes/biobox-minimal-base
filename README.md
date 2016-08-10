@@ -19,3 +19,17 @@ running a biobox easier. The included software are:
     ```
 
 [jq]: https://stedolan.github.io/jq/manual/
+
+## Using
+
+Developing bioboxes using the bioboxes minimal base image requires creating a
+executable script inside the image and setting the environment variable
+`BIOBOX_EXEC`. This script will be executed by the validate_inputs.sh script
+after checking the biobox.yaml file is valid. The follow environment variables
+will also be set and are recommended to be used:
+
+  * **INPUT** The location of the biobox.yaml file mounted in the container.
+  * **OUTPUT** The location of the output directory where generated files
+    should be placed, including a new biobox.yaml describing the generated
+    outputs.
+  * **METADATA** A directory for storing logs and other metadata.
