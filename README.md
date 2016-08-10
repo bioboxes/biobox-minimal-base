@@ -1,5 +1,7 @@
 # biobox minimal base image
 
+## About
+
 This is contains a minimal debian base image for creating bioboxes. This
 bundles software which can make the verification and argument parsing steps of
 running a biobox easier. The included software are:
@@ -10,8 +12,10 @@ running a biobox easier. The included software are:
     `BIOBOX_EXEC` environment variable in the developer's Dockfile is called.
 
   * **biobox_args.sh** - Fetches the `biobox.yaml` arguments and then applies a
-    given `jq` path. An example of fetching fastq paths is:
+    given [jq][] path. An example of fetching fastq paths is:
 
     ```
     biobox_args.sh 'select(has("fasta")) | .fasta | map(.value)'
     ```
+
+[jq]: https://stedolan.github.io/jq/manual/
