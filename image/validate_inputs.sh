@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -n "$BIOBOX_EXEC" ]; then
+if [ ! -z "${BIOBOX_EXEC+}" ]; then
 	echo "Internal biobox error: the required variable BIOBOX_EXEC is not set." >&2
 	exit 1
 fi
