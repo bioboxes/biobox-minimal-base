@@ -12,9 +12,4 @@ if [[ -z ${CMD} ]]; then
   exit 1
 fi
 
-# if /bbx/metadata is mounted create log.txt
-if [ -d "${METADATA}" ]; then
-  CMD="$CMD >& ${METADATA}/log.txt"
-fi
-
 echo "$CMD"
