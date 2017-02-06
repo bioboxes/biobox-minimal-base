@@ -11,6 +11,9 @@ running a biobox easier. The included software are:
     Dockerfile. After checking the biobox.yaml file the script named by the
     `BIOBOX_EXEC` environment variable in the developer's Dockfile is called.
 
+  * **fetch_archive.sh** - Given a URL and a name, fetches the URL and
+    decompresses it to a directory under `/usr/local` with the given name.
+
   * **biobox_args.sh** - Fetches the `biobox.yaml` arguments and then applies a
     given [jq][] path. An example of fetching fastq paths is:
 
