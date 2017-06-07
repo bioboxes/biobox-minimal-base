@@ -14,7 +14,7 @@ apt-get install --yes --no-install-recommends ${PACKAGES}
 # Used to convert input biobox.yaml files from YAML to JSON when using jq
 #
 wget --quiet 'https://github.com/bronze1man/yaml2json/raw/master/builds/linux_386/yaml2json'
-chmod 700 yaml2json
+chmod a+xr yaml2json
 mv yaml2json /usr/local/bin
 
 
@@ -32,7 +32,7 @@ rm -rf /root/build
 #
 wget --quiet --output-document /usr/local/bin/jq \
 	     'https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64'
-chmod 500 /usr/local/bin/jq
+chmod a+xr /usr/local/bin/jq
 
 apt-get autoremove --purge --yes ${PACKAGES}
 apt-get -q clean
